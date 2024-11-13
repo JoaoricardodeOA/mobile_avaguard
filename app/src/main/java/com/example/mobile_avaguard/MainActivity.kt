@@ -37,6 +37,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -126,7 +127,11 @@ fun LoginForm(
                 Icon(
                     imageVector = Icons.Default.Person, // You can use any icon you like
                     contentDescription = "Email Icon",
-                    tint = Color.Blue
+                    tint = Color(
+                        red = 83,
+                        green = 96,
+                        blue = 245
+                    )
                 )
             }
         )
@@ -154,14 +159,22 @@ fun LoginForm(
                 Icon(
                     painter = painterResource(R.drawable.baseline_remove_red_eye_24), // You can use any icon you like
                     contentDescription = "Email Icon",
-                    tint = Color.Blue
+                    tint = Color(
+                        red = 83,
+                        green = 96,
+                        blue = 245
+                    )
                 )
             },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Lock, // You can use any icon you like
                     contentDescription = "Lock Icon",
-                    tint = Color.Blue
+                    tint = Color(
+                        red = 83,
+                        green = 96,
+                        blue = 245
+                    )
                 )
             }
         )
@@ -234,5 +247,10 @@ fun LoginForm(
 @Preview(showBackground = true)
 @Composable
 fun PreviewLoginForm() {
-    LoginForm(onLogin = { email, password -> /* Handle login */ })
+    val context = LocalContext.current
+    LoginForm(onLogin = { email, password ->
+        val intent = Intent(context, FormActivity::class.java)
+        context.startActivity(intent)
+         }
+    )
 }
