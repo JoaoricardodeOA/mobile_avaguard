@@ -57,6 +57,8 @@ class MainActivity : ComponentActivity() {
                     LoginForm(
                         onLogin = { email, password ->
                             Toast.makeText(this, "Email logado $email", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, FormActivity::class.java)
+                            startActivity(intent)
                         },
                         isLoading = false,
                         errorMessage = null,
@@ -244,13 +246,8 @@ fun LoginForm(
         }
     }
 }
-@Preview(showBackground = true)
 @Composable
 fun PreviewLoginForm() {
-    val context = LocalContext.current
-    LoginForm(onLogin = { email, password ->
-        val intent = Intent(context, FormActivity::class.java)
-        context.startActivity(intent)
-         }
+    LoginForm(onLogin = { email, password -> }
     )
 }
