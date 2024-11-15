@@ -203,7 +203,7 @@ fun LoginForm(
         ) {
             Button(
                 onClick = {
-                    val isEmailValid = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+                    val isEmailValid = true//android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
                     val isPasswordValid = password.isNotEmpty()
 
                     if (isEmailValid && isPasswordValid) {
